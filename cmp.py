@@ -27,7 +27,8 @@ def lexerFunc(input_string):  #Tokenizer, whitespace ignored, Simple Error Detec
     
 
     # Define the tokens
-    tokens = ('WORD', 'LBRACKET', 'RBRACKET', 'COMMA', 'WHITESPACE', 'IDENTIFIER', 'NUMBER', 'STRING', 'COMMENT')
+    tokens = ('WORD', 'LBRACKET', 'RBRACKET', 'COMMA', 'WHITESPACE', 'IDENTIFIER', 'NUMBER', 'STRING', 'COMMENT',
+               'PARENTHESES', 'EQUATE', 'TERMINAL')
 
     # Token Definitions
     t_WORD = r'\w+'
@@ -39,6 +40,9 @@ def lexerFunc(input_string):  #Tokenizer, whitespace ignored, Simple Error Detec
     t_STRING = r'\".*?\"'
     t_COMMENT = r'\#.*'
     t_WHITESPACE = r'\s+'  # This will be ignored
+    t_PARENTHESES = r'[()]'
+    t_EQUATE = r'[=\+]'
+    t_TERMINAL = r'[;]'
 
     # Error handling rule
     def t_error(t):
@@ -81,6 +85,11 @@ def parser():
 
 
 #TEST CASE
+
+# input_code = """    if(i==j)
+#         z=0;
+#     else
+#         z=1;"""
 
 input_code = """avg[x1, x2, x3, x4, x5, x6, x7, x8, x9, x10, x11, x12, x13, x14, x15, x16, x17, x18, x19, x20, x21, x22, x23, x24, x25, x26, x27, x28, x29, x30, x31, x32, x33, x34, x35, x36, x37, x38, x39, x40, x41, x42, x43, x44, x45, x46, x47, x48, x49
  , x50, x51, x52, x53, x54, x55, x56, x57, x58, x59, x60, x61, x62, x63, x64, x65, x66
