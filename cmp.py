@@ -1,5 +1,7 @@
 import re, math
 import ply, pyparsing, ast
+from ply.lex import lex
+from ply.lex import TOKEN
 
 # steps = [1489, 1242, 1389, 1516, 1520, 1479, 1177, 1124, 1210, 1494, 1258, 1407, 1325, 
 # 1270, 1432, 1192, 1327, 1349, 1120, 1175, 1193, 1196, 1506, 1473, 1268, 1235, 
@@ -16,8 +18,46 @@ import ply, pyparsing, ast
 
 #TOKENIZER
 
-def tokenizer(input_string):
-    token = re.findall(r"[\w]+|[\[\],]", input_string)
+def lexerFunc(input_string):  #Tokenizer, whitespace ignored, Simple Error Detection, Token Stream Generation
+    # Initial implementation using re.findall
+    # token = re.findall(r"[\w]+|[\[\],]", input_string)
+    # return token
+
+    # Re-implementation using the ply library
+    
+
+    # Define the tokens
+    tokens = ('WORD', 'LBRACKET', 'RBRACKET', 'COMMA', 'WHITESPACE', 'IDENTIFIER', 'NUMBER', 'STRING', 'COMMENT')
+
+    # Token Definitions
+    t_WORD = r'\w+'
+    t_LBRACKET = r'\['
+    t_RBRACKET = r'\]'
+    t_COMMA = r','
+    t_IDENTIFIER = r'[a-zA-Z_][a-zA-Z0-9_]*'
+    t_NUMBER = r'\d+(\.\d+)?'
+    t_STRING = r'\".*?\"'
+    t_COMMENT = r'\#.*'
+    t_WHITESPACE = r'\s+'  # This will be ignored
+
+    # Error handling rule
+    def t_error(t):
+        raise Exception(f"Illegal character '{t.value[0]}'")
+
+    # Create the lexer
+    lexer = lex()
+    # Input the string to the lexer
+    lexer.input(input_string)
+    # Initialize the token list
+    token = []
+    # Iterate over the tokens and append them to the token list
+    while True:
+        tok = lexer.token()
+        if not tok:
+            break
+        if tok.type != 'WHITESPACE': #Ignores whitespaces
+            token.append(tok.value)
+    # Return the token list
     return token
 
 
@@ -59,4 +99,4 @@ dis = {
     'x81': 1232, 'x82': 1205, 'x83': 1179, 'x84': 1351, 'x85': 1288, 'x86': 1316, 'x87': 1256, 'x88': 1552, 'x89': 1498, 'x90': 1254
 }
 
-print(tokenizer(input_code))
+print(lexerFunc(input_code))
