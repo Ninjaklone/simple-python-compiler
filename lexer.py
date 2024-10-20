@@ -1,6 +1,8 @@
 import re
 from ply.lex import lex
 
+'''For the sake of clarity, Please try and comment the code as you go.
+    As much as possible'''
 class Lexer:
     # List of token names
     tokens = (
@@ -14,12 +16,12 @@ class Lexer:
     t_COMMENT = r'\#.*'                            # Comment
     t_NEWLINE = r'\n'                             # Line endings
     t_SKIP = r'[ \t]+'                            # Skip over spaces and tabs
-    t_KEYWORD = r'\b(?:def|return|if|else|elif|for|while|break|continue|True|False|None)\b'  # Python keywords
-    t_IDENT = r'[A-Za-z_][A-Za-z0-9_]*'          # Identifiers
-    t_OP = r'[+\-*/%//==!=<>]=?|[@^&|~]'           # Operators
-    t_DELIM = r'[(),:;{}[\].]'                     # Delimiters
+    t_KEYWORD = r'\b(?:def|return|if|else|elif|for|while|break|continue|True|False|None)\b'  # "Reserved" words
+    t_IDENT = r'[A-Za-z_][A-Za-z0-9_]*'          # Identifiers: Variables, Functions, etc.
+    t_OP = r'[+\-*/%//==!=<>]=?|[@^&|~]'           # Operators: Arithmetic, Comparison, etc.
+    t_DELIM = r'[(),:;{}[\].]'                     # Delimiters: You know the things that denote boundaries
 
-    # Parentheses
+    # Parentheses (Redundant but just cause we can)
     t_L_PAREN = r'\('  # Regex for left parenthesis
     t_R_PAREN = r'\)'  # Regex for right parenthesis
     t_EQUATE = r'='
@@ -61,7 +63,7 @@ class Lexer:
             if tok.type not in self.tokens:
                 raise Exception(f"Unexpected token '{tok.value}' at position {tok.lexpos}")
 
-        # Final check for balanced parentheses
+        # Another Check just cause we can
         if parentheses_count != 0:
             raise Exception("Unmatched opening parenthesis")
 
