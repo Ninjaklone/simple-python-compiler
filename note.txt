@@ -5,3 +5,23 @@ steps = [1489, 1242, 1389, 1516, 1520, 1479, 1177, 1124, 1210, 1494, 1258, 1407,
 1284, 1405, 1536, 1397, 1266, 1519, 1267, 1561, 1220, 1362, 1351, 1461, 1238, 
 1432, 1129, 1561, 1319, 1496, 1136, 1402, 1157, 1189, 1485, 1263, 1133, 1169, 
 1134, 1314, 1232, 1205, 1179, 1351, 1288, 1316, 1256, 1552, 1498, 1254]
+
+
+class TestLexer(unittest.TestCase):
+    def setUp(self):
+        self.lexer = Lexer()
+
+    def test_tokenization(self):
+        input_code = """if(i==j)
+                        z=0;
+                        else
+                        z=1;"""
+        expected_tokens = ['if', '(', 'i', '==', 'j', ')', 'z', '=', '0', ';', 'else', 'z', '=', '1', ';']
+        actual_tokens = self.lexer.lexerFunc(input_code)
+        self.assertEqual(actual_tokens, expected_tokens)
+
+if __name__ == '__main__':
+    unittest.main()
+
+
+input_code = open('note.txt','r').read()
