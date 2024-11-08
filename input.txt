@@ -1,0 +1,7 @@
+def calculate(x, y):
+    if x > y:
+        return x * 2
+    else:
+        return y + 1
+
+result = calculate(5, 3)

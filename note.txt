@@ -25,3 +25,7 @@ if __name__ == '__main__':
 
 
 input_code = open('note.txt','r').read()
+
+
+
+

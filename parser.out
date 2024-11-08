@@ -1,0 +1,1204 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    COMMENT
+    DELIM
+    DOT
+    L_BRACE
+    L_BRACKET
+    OP_BITWISE
+    R_BRACE
+    R_BRACKET
+    SEMICOLON
+    SKIP
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> statement_list
+Rule 2     statement_list -> statement
+Rule 3     statement_list -> statement_list statement
+Rule 4     statement -> assignment_statement
+Rule 5     statement -> expression_statement
+Rule 6     statement -> if_statement
+Rule 7     statement -> while_statement
+Rule 8     statement -> for_statement
+Rule 9     statement -> function_def
+Rule 10    statement -> return_statement
+Rule 11    statement -> compound_statement
+Rule 12    assignment_statement -> IDENT ASSIGN expression NEWLINE
+Rule 13    expression_statement -> expression NEWLINE
+Rule 14    expression -> arithmetic_expr
+Rule 15    expression -> comparison_expr
+Rule 16    expression -> logical_expr
+Rule 17    expression -> atom
+Rule 18    arithmetic_expr -> expression OP_ARITH expression
+Rule 19    comparison_expr -> expression OP_COMP expression
+Rule 20    logical_expr -> expression OP_LOGIC expression
+Rule 21    atom -> IDENT
+Rule 22    atom -> NUMBER_INT
+Rule 23    atom -> NUMBER_FLOAT
+Rule 24    atom -> STRING
+Rule 25    atom -> L_PAREN expression R_PAREN
+Rule 26    if_statement -> KEYWORD expression COLON compound_statement
+Rule 27    if_statement -> KEYWORD expression COLON compound_statement KEYWORD compound_statement
+Rule 28    while_statement -> KEYWORD expression COLON compound_statement
+Rule 29    for_statement -> KEYWORD IDENT KEYWORD expression COLON compound_statement
+Rule 30    function_def -> KEYWORD IDENT L_PAREN parameter_list R_PAREN COLON compound_statement
+Rule 31    parameter_list -> IDENT
+Rule 32    parameter_list -> parameter_list COMMA IDENT
+Rule 33    parameter_list -> <empty>
+Rule 34    compound_statement -> NEWLINE statement_list
+Rule 35    return_statement -> KEYWORD expression NEWLINE
+
+Terminals, with rules where they appear
+
+ASSIGN               : 12
+COLON                : 26 27 28 29 30
+COMMA                : 32
+COMMENT              : 
+DELIM                : 
+DOT                  : 
+IDENT                : 12 21 29 30 31 32
+KEYWORD              : 26 27 27 28 29 29 30 35
+L_BRACE              : 
+L_BRACKET            : 
+L_PAREN              : 25 30
+NEWLINE              : 12 13 34 35
+NUMBER_FLOAT         : 23
+NUMBER_INT           : 22
+OP_ARITH             : 18
+OP_BITWISE           : 
+OP_COMP              : 19
+OP_LOGIC             : 20
+R_BRACE              : 
+R_BRACKET            : 
+R_PAREN              : 25 30
+SEMICOLON            : 
+SKIP                 : 
+STRING               : 24
+error                : 
+
+Nonterminals, with rules where they appear
+
+arithmetic_expr      : 14
+assignment_statement : 4
+atom                 : 17
+comparison_expr      : 15
+compound_statement   : 11 26 27 27 28 29 30
+expression           : 12 13 18 18 19 19 20 20 25 26 27 28 29 35
+expression_statement : 5
+for_statement        : 8
+function_def         : 9
+if_statement         : 6
+logical_expr         : 16
+parameter_list       : 30 32
+program              : 0
+return_statement     : 10
+statement            : 2 3
+statement_list       : 1 3 34
+while_statement      : 7
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . statement_list
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement_list statement
+    (4) statement -> . assignment_statement
+    (5) statement -> . expression_statement
+    (6) statement -> . if_statement
+    (7) statement -> . while_statement
+    (8) statement -> . for_statement
+    (9) statement -> . function_def
+    (10) statement -> . return_statement
+    (11) statement -> . compound_statement
+    (12) assignment_statement -> . IDENT ASSIGN expression NEWLINE
+    (13) expression_statement -> . expression NEWLINE
+    (26) if_statement -> . KEYWORD expression COLON compound_statement
+    (27) if_statement -> . KEYWORD expression COLON compound_statement KEYWORD compound_statement
+    (28) while_statement -> . KEYWORD expression COLON compound_statement
+    (29) for_statement -> . KEYWORD IDENT KEYWORD expression COLON compound_statement
+    (30) function_def -> . KEYWORD IDENT L_PAREN parameter_list R_PAREN COLON compound_statement
+    (35) return_statement -> . KEYWORD expression NEWLINE
+    (34) compound_statement -> . NEWLINE statement_list
+    (14) expression -> . arithmetic_expr
+    (15) expression -> . comparison_expr
+    (16) expression -> . logical_expr
+    (17) expression -> . atom
+    (18) arithmetic_expr -> . expression OP_ARITH expression
+    (19) comparison_expr -> . expression OP_COMP expression
+    (20) logical_expr -> . expression OP_LOGIC expression
+    (21) atom -> . IDENT
+    (22) atom -> . NUMBER_INT
+    (23) atom -> . NUMBER_FLOAT
+    (24) atom -> . STRING
+    (25) atom -> . L_PAREN expression R_PAREN
+
+    IDENT           shift and go to state 12
+    KEYWORD         shift and go to state 15
+    NEWLINE         shift and go to state 14
+    NUMBER_INT      shift and go to state 21
+    NUMBER_FLOAT    shift and go to state 22
+    STRING          shift and go to state 23
+    L_PAREN         shift and go to state 16
+
+    program                        shift and go to state 1
+    statement_list                 shift and go to state 2
+    statement                      shift and go to state 3
+    assignment_statement           shift and go to state 4
+    expression_statement           shift and go to state 5
+    if_statement                   shift and go to state 6
+    while_statement                shift and go to state 7
+    for_statement                  shift and go to state 8
+    function_def                   shift and go to state 9
+    return_statement               shift and go to state 10
+    compound_statement             shift and go to state 11
+    expression                     shift and go to state 13
+    arithmetic_expr                shift and go to state 17
+    comparison_expr                shift and go to state 18
+    logical_expr                   shift and go to state 19
+    atom                           shift and go to state 20
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> statement_list .
+    (3) statement_list -> statement_list . statement
+    (4) statement -> . assignment_statement
+    (5) statement -> . expression_statement
+    (6) statement -> . if_statement
+    (7) statement -> . while_statement
+    (8) statement -> . for_statement
+    (9) statement -> . function_def
+    (10) statement -> . return_statement
+    (11) statement -> . compound_statement
+    (12) assignment_statement -> . IDENT ASSIGN expression NEWLINE
+    (13) expression_statement -> . expression NEWLINE
+    (26) if_statement -> . KEYWORD expression COLON compound_statement
+    (27) if_statement -> . KEYWORD expression COLON compound_statement KEYWORD compound_statement
+    (28) while_statement -> . KEYWORD expression COLON compound_statement
+    (29) for_statement -> . KEYWORD IDENT KEYWORD expression COLON compound_statement
+    (30) function_def -> . KEYWORD IDENT L_PAREN parameter_list R_PAREN COLON compound_statement
+    (35) return_statement -> . KEYWORD expression NEWLINE
+    (34) compound_statement -> . NEWLINE statement_list
+    (14) expression -> . arithmetic_expr
+    (15) expression -> . comparison_expr
+    (16) expression -> . logical_expr
+    (17) expression -> . atom
+    (18) arithmetic_expr -> . expression OP_ARITH expression
+    (19) comparison_expr -> . expression OP_COMP expression
+    (20) logical_expr -> . expression OP_LOGIC expression
+    (21) atom -> . IDENT
+    (22) atom -> . NUMBER_INT
+    (23) atom -> . NUMBER_FLOAT
+    (24) atom -> . STRING
+    (25) atom -> . L_PAREN expression R_PAREN
+
+    $end            reduce using rule 1 (program -> statement_list .)
+    IDENT           shift and go to state 12
+    KEYWORD         shift and go to state 15
+    NEWLINE         shift and go to state 14
+    NUMBER_INT      shift and go to state 21
+    NUMBER_FLOAT    shift and go to state 22
+    STRING          shift and go to state 23
+    L_PAREN         shift and go to state 16
+
+    statement                      shift and go to state 24
+    assignment_statement           shift and go to state 4
+    expression_statement           shift and go to state 5
+    if_statement                   shift and go to state 6
+    while_statement                shift and go to state 7
+    for_statement                  shift and go to state 8
+    function_def                   shift and go to state 9
+    return_statement               shift and go to state 10
+    compound_statement             shift and go to state 11
+    expression                     shift and go to state 13
+    arithmetic_expr                shift and go to state 17
+    comparison_expr                shift and go to state 18
+    logical_expr                   shift and go to state 19
+    atom                           shift and go to state 20
+
+state 3
+
+    (2) statement_list -> statement .
+
+    IDENT           reduce using rule 2 (statement_list -> statement .)
+    KEYWORD         reduce using rule 2 (statement_list -> statement .)
+    NEWLINE         reduce using rule 2 (statement_list -> statement .)
+    NUMBER_INT      reduce using rule 2 (statement_list -> statement .)
+    NUMBER_FLOAT    reduce using rule 2 (statement_list -> statement .)
+    STRING          reduce using rule 2 (statement_list -> statement .)
+    L_PAREN         reduce using rule 2 (statement_list -> statement .)
+    $end            reduce using rule 2 (statement_list -> statement .)
+
+
+state 4
+
+    (4) statement -> assignment_statement .
+
+    IDENT           reduce using rule 4 (statement -> assignment_statement .)
+    KEYWORD         reduce using rule 4 (statement -> assignment_statement .)
+    NEWLINE         reduce using rule 4 (statement -> assignment_statement .)
+    NUMBER_INT      reduce using rule 4 (statement -> assignment_statement .)
+    NUMBER_FLOAT    reduce using rule 4 (statement -> assignment_statement .)
+    STRING          reduce using rule 4 (statement -> assignment_statement .)
+    L_PAREN         reduce using rule 4 (statement -> assignment_statement .)
+    $end            reduce using rule 4 (statement -> assignment_statement .)
+
+
+state 5
+
+    (5) statement -> expression_statement .
+
+    IDENT           reduce using rule 5 (statement -> expression_statement .)
+    KEYWORD         reduce using rule 5 (statement -> expression_statement .)
+    NEWLINE         reduce using rule 5 (statement -> expression_statement .)
+    NUMBER_INT      reduce using rule 5 (statement -> expression_statement .)
+    NUMBER_FLOAT    reduce using rule 5 (statement -> expression_statement .)
+    STRING          reduce using rule 5 (statement -> expression_statement .)
+    L_PAREN         reduce using rule 5 (statement -> expression_statement .)
+    $end            reduce using rule 5 (statement -> expression_statement .)
+
+
+state 6
+
+    (6) statement -> if_statement .
+
+    IDENT           reduce using rule 6 (statement -> if_statement .)
+    KEYWORD         reduce using rule 6 (statement -> if_statement .)
+    NEWLINE         reduce using rule 6 (statement -> if_statement .)
+    NUMBER_INT      reduce using rule 6 (statement -> if_statement .)
+    NUMBER_FLOAT    reduce using rule 6 (statement -> if_statement .)
+    STRING          reduce using rule 6 (statement -> if_statement .)
+    L_PAREN         reduce using rule 6 (statement -> if_statement .)
+    $end            reduce using rule 6 (statement -> if_statement .)
+
+
+state 7
+
+    (7) statement -> while_statement .
+
+    IDENT           reduce using rule 7 (statement -> while_statement .)
+    KEYWORD         reduce using rule 7 (statement -> while_statement .)
+    NEWLINE         reduce using rule 7 (statement -> while_statement .)
+    NUMBER_INT      reduce using rule 7 (statement -> while_statement .)
+    NUMBER_FLOAT    reduce using rule 7 (statement -> while_statement .)
+    STRING          reduce using rule 7 (statement -> while_statement .)
+    L_PAREN         reduce using rule 7 (statement -> while_statement .)
+    $end            reduce using rule 7 (statement -> while_statement .)
+
+
+state 8
+
+    (8) statement -> for_statement .
+
+    IDENT           reduce using rule 8 (statement -> for_statement .)
+    KEYWORD         reduce using rule 8 (statement -> for_statement .)
+    NEWLINE         reduce using rule 8 (statement -> for_statement .)
+    NUMBER_INT      reduce using rule 8 (statement -> for_statement .)
+    NUMBER_FLOAT    reduce using rule 8 (statement -> for_statement .)
+    STRING          reduce using rule 8 (statement -> for_statement .)
+    L_PAREN         reduce using rule 8 (statement -> for_statement .)
+    $end            reduce using rule 8 (statement -> for_statement .)
+
+
+state 9
+
+    (9) statement -> function_def .
+
+    IDENT           reduce using rule 9 (statement -> function_def .)
+    KEYWORD         reduce using rule 9 (statement -> function_def .)
+    NEWLINE         reduce using rule 9 (statement -> function_def .)
+    NUMBER_INT      reduce using rule 9 (statement -> function_def .)
+    NUMBER_FLOAT    reduce using rule 9 (statement -> function_def .)
+    STRING          reduce using rule 9 (statement -> function_def .)
+    L_PAREN         reduce using rule 9 (statement -> function_def .)
+    $end            reduce using rule 9 (statement -> function_def .)
+
+
+state 10
+
+    (10) statement -> return_statement .
+
+    IDENT           reduce using rule 10 (statement -> return_statement .)
+    KEYWORD         reduce using rule 10 (statement -> return_statement .)
+    NEWLINE         reduce using rule 10 (statement -> return_statement .)
+    NUMBER_INT      reduce using rule 10 (statement -> return_statement .)
+    NUMBER_FLOAT    reduce using rule 10 (statement -> return_statement .)
+    STRING          reduce using rule 10 (statement -> return_statement .)
+    L_PAREN         reduce using rule 10 (statement -> return_statement .)
+    $end            reduce using rule 10 (statement -> return_statement .)
+
+
+state 11
+
+    (11) statement -> compound_statement .
+
+    IDENT           reduce using rule 11 (statement -> compound_statement .)
+    KEYWORD         reduce using rule 11 (statement -> compound_statement .)
+    NEWLINE         reduce using rule 11 (statement -> compound_statement .)
+    NUMBER_INT      reduce using rule 11 (statement -> compound_statement .)
+    NUMBER_FLOAT    reduce using rule 11 (statement -> compound_statement .)
+    STRING          reduce using rule 11 (statement -> compound_statement .)
+    L_PAREN         reduce using rule 11 (statement -> compound_statement .)
+    $end            reduce using rule 11 (statement -> compound_statement .)
+
+
+state 12
+
+    (12) assignment_statement -> IDENT . ASSIGN expression NEWLINE
+    (21) atom -> IDENT .
+
+    ASSIGN          shift and go to state 25
+    NEWLINE         reduce using rule 21 (atom -> IDENT .)
+    OP_ARITH        reduce using rule 21 (atom -> IDENT .)
+    OP_COMP         reduce using rule 21 (atom -> IDENT .)
+    OP_LOGIC        reduce using rule 21 (atom -> IDENT .)
+
+
+state 13
+
+    (13) expression_statement -> expression . NEWLINE
+    (18) arithmetic_expr -> expression . OP_ARITH expression
+    (19) comparison_expr -> expression . OP_COMP expression
+    (20) logical_expr -> expression . OP_LOGIC expression
+
+    NEWLINE         shift and go to state 26
+    OP_ARITH        shift and go to state 27
+    OP_COMP         shift and go to state 28
+    OP_LOGIC        shift and go to state 29
+
+
+state 14
+
+    (34) compound_statement -> NEWLINE . statement_list
+    (2) statement_list -> . statement
+    (3) statement_list -> . statement_list statement
+    (4) statement -> . assignment_statement
+    (5) statement -> . expression_statement
+    (6) statement -> . if_statement
+    (7) statement -> . while_statement
+    (8) statement -> . for_statement
+    (9) statement -> . function_def
+    (10) statement -> . return_statement
+    (11) statement -> . compound_statement
+    (12) assignment_statement -> . IDENT ASSIGN expression NEWLINE
+    (13) expression_statement -> . expression NEWLINE
+    (26) if_statement -> . KEYWORD expression COLON compound_statement
+    (27) if_statement -> . KEYWORD expression COLON compound_statement KEYWORD compound_statement
+    (28) while_statement -> . KEYWORD expression COLON compound_statement
+    (29) for_statement -> . KEYWORD IDENT KEYWORD expression COLON compound_statement
+    (30) function_def -> . KEYWORD IDENT L_PAREN parameter_list R_PAREN COLON compound_statement
+    (35) return_statement -> . KEYWORD expression NEWLINE
+    (34) compound_statement -> . NEWLINE statement_list
+    (14) expression -> . arithmetic_expr
+    (15) expression -> . comparison_expr
+    (16) expression -> . logical_expr
+    (17) expression -> . atom
+    (18) arithmetic_expr -> . expression OP_ARITH expression
+    (19) comparison_expr -> . expression OP_COMP expression
+    (20) logical_expr -> . expression OP_LOGIC expression
+    (21) atom -> . IDENT
+    (22) atom -> . NUMBER_INT
+    (23) atom -> . NUMBER_FLOAT
+    (24) atom -> . STRING
+    (25) atom -> . L_PAREN expression R_PAREN
+
+    IDENT           shift and go to state 12
+    KEYWORD         shift and go to state 15
+    NEWLINE         shift and go to state 14
+    NUMBER_INT      shift and go to state 21
+    NUMBER_FLOAT    shift and go to state 22
+    STRING          shift and go to state 23
+    L_PAREN         shift and go to state 16
+
+    statement_list                 shift and go to state 30
+    statement                      shift and go to state 3
+    assignment_statement           shift and go to state 4
+    expression_statement           shift and go to state 5
+    if_statement                   shift and go to state 6
+    while_statement                shift and go to state 7
+    for_statement                  shift and go to state 8
+    function_def                   shift and go to state 9
+    return_statement               shift and go to state 10
+    compound_statement             shift and go to state 11
+    expression                     shift and go to state 13
+    arithmetic_expr                shift and go to state 17
+    comparison_expr                shift and go to state 18
+    logical_expr                   shift and go to state 19
+    atom                           shift and go to state 20
+
+state 15
+
+    (26) if_statement -> KEYWORD . expression COLON compound_statement
+    (27) if_statement -> KEYWORD . expression COLON compound_statement KEYWORD compound_statement
+    (28) while_statement -> KEYWORD . expression COLON compound_statement
+    (29) for_statement -> KEYWORD . IDENT KEYWORD expression COLON compound_statement
+    (30) function_def -> KEYWORD . IDENT L_PAREN parameter_list R_PAREN COLON compound_statement
+    (35) return_statement -> KEYWORD . expression NEWLINE
+    (14) expression -> . arithmetic_expr
+    (15) expression -> . comparison_expr
+    (16) expression -> . logical_expr
+    (17) expression -> . atom
+    (18) arithmetic_expr -> . expression OP_ARITH expression
+    (19) comparison_expr -> . expression OP_COMP expression
+    (20) logical_expr -> . expression OP_LOGIC expression
+    (21) atom -> . IDENT
+    (22) atom -> . NUMBER_INT
+    (23) atom -> . NUMBER_FLOAT
+    (24) atom -> . STRING
+    (25) atom -> . L_PAREN expression R_PAREN
+
+    IDENT           shift and go to state 32
+    NUMBER_INT      shift and go to state 21
+    NUMBER_FLOAT    shift and go to state 22
+    STRING          shift and go to state 23
+    L_PAREN         shift and go to state 16
+
+    expression                     shift and go to state 31
+    arithmetic_expr                shift and go to state 17
+    comparison_expr                shift and go to state 18
+    logical_expr                   shift and go to state 19
+    atom                           shift and go to state 20
+
+state 16
+
+    (25) atom -> L_PAREN . expression R_PAREN
+    (14) expression -> . arithmetic_expr
+    (15) expression -> . comparison_expr
+    (16) expression -> . logical_expr
+    (17) expression -> . atom
+    (18) arithmetic_expr -> . expression OP_ARITH expression
+    (19) comparison_expr -> . expression OP_COMP expression
+    (20) logical_expr -> . expression OP_LOGIC expression
+    (21) atom -> . IDENT
+    (22) atom -> . NUMBER_INT
+    (23) atom -> . NUMBER_FLOAT
+    (24) atom -> . STRING
+    (25) atom -> . L_PAREN expression R_PAREN
+
+    IDENT           shift and go to state 34
+    NUMBER_INT      shift and go to state 21
+    NUMBER_FLOAT    shift and go to state 22
+    STRING          shift and go to state 23
+    L_PAREN         shift and go to state 16
+
+    expression                     shift and go to state 33
+    arithmetic_expr                shift and go to state 17
+    comparison_expr                shift and go to state 18
+    logical_expr                   shift and go to state 19
+    atom                           shift and go to state 20
+
+state 17
+
+    (14) expression -> arithmetic_expr .
+
+    NEWLINE         reduce using rule 14 (expression -> arithmetic_expr .)
+    OP_ARITH        reduce using rule 14 (expression -> arithmetic_expr .)
+    OP_COMP         reduce using rule 14 (expression -> arithmetic_expr .)
+    OP_LOGIC        reduce using rule 14 (expression -> arithmetic_expr .)
+    COLON           reduce using rule 14 (expression -> arithmetic_expr .)
+    R_PAREN         reduce using rule 14 (expression -> arithmetic_expr .)
+
+
+state 18
+
+    (15) expression -> comparison_expr .
+
+    NEWLINE         reduce using rule 15 (expression -> comparison_expr .)
+    OP_ARITH        reduce using rule 15 (expression -> comparison_expr .)
+    OP_COMP         reduce using rule 15 (expression -> comparison_expr .)
+    OP_LOGIC        reduce using rule 15 (expression -> comparison_expr .)
+    COLON           reduce using rule 15 (expression -> comparison_expr .)
+    R_PAREN         reduce using rule 15 (expression -> comparison_expr .)
+
+
+state 19
+
+    (16) expression -> logical_expr .
+
+    NEWLINE         reduce using rule 16 (expression -> logical_expr .)
+    OP_ARITH        reduce using rule 16 (expression -> logical_expr .)
+    OP_COMP         reduce using rule 16 (expression -> logical_expr .)
+    OP_LOGIC        reduce using rule 16 (expression -> logical_expr .)
+    COLON           reduce using rule 16 (expression -> logical_expr .)
+    R_PAREN         reduce using rule 16 (expression -> logical_expr .)
+
+
+state 20
+
+    (17) expression -> atom .
+
+    NEWLINE         reduce using rule 17 (expression -> atom .)
+    OP_ARITH        reduce using rule 17 (expression -> atom .)
+    OP_COMP         reduce using rule 17 (expression -> atom .)
+    OP_LOGIC        reduce using rule 17 (expression -> atom .)
+    COLON           reduce using rule 17 (expression -> atom .)
+    R_PAREN         reduce using rule 17 (expression -> atom .)
+
+
+state 21
+
+    (22) atom -> NUMBER_INT .
+
+    NEWLINE         reduce using rule 22 (atom -> NUMBER_INT .)
+    OP_ARITH        reduce using rule 22 (atom -> NUMBER_INT .)
+    OP_COMP         reduce using rule 22 (atom -> NUMBER_INT .)
+    OP_LOGIC        reduce using rule 22 (atom -> NUMBER_INT .)
+    COLON           reduce using rule 22 (atom -> NUMBER_INT .)
+    R_PAREN         reduce using rule 22 (atom -> NUMBER_INT .)
+
+
+state 22
+
+    (23) atom -> NUMBER_FLOAT .
+
+    NEWLINE         reduce using rule 23 (atom -> NUMBER_FLOAT .)
+    OP_ARITH        reduce using rule 23 (atom -> NUMBER_FLOAT .)
+    OP_COMP         reduce using rule 23 (atom -> NUMBER_FLOAT .)
+    OP_LOGIC        reduce using rule 23 (atom -> NUMBER_FLOAT .)
+    COLON           reduce using rule 23 (atom -> NUMBER_FLOAT .)
+    R_PAREN         reduce using rule 23 (atom -> NUMBER_FLOAT .)
+
+
+state 23
+
+    (24) atom -> STRING .
+
+    NEWLINE         reduce using rule 24 (atom -> STRING .)
+    OP_ARITH        reduce using rule 24 (atom -> STRING .)
+    OP_COMP         reduce using rule 24 (atom -> STRING .)
+    OP_LOGIC        reduce using rule 24 (atom -> STRING .)
+    COLON           reduce using rule 24 (atom -> STRING .)
+    R_PAREN         reduce using rule 24 (atom -> STRING .)
+
+
+state 24
+
+    (3) statement_list -> statement_list statement .
+
+    IDENT           reduce using rule 3 (statement_list -> statement_list statement .)
+    KEYWORD         reduce using rule 3 (statement_list -> statement_list statement .)
+    NEWLINE         reduce using rule 3 (statement_list -> statement_list statement .)
+    NUMBER_INT      reduce using rule 3 (statement_list -> statement_list statement .)
+    NUMBER_FLOAT    reduce using rule 3 (statement_list -> statement_list statement .)
+    STRING          reduce using rule 3 (statement_list -> statement_list statement .)
+    L_PAREN         reduce using rule 3 (statement_list -> statement_list statement .)
+    $end            reduce using rule 3 (statement_list -> statement_list statement .)
+
+
+state 25
+
+    (12) assignment_statement -> IDENT ASSIGN . expression NEWLINE
+    (14) expression -> . arithmetic_expr
+    (15) expression -> . comparison_expr
+    (16) expression -> . logical_expr
+    (17) expression -> . atom
+    (18) arithmetic_expr -> . expression OP_ARITH expression
+    (19) comparison_expr -> . expression OP_COMP expression
+    (20) logical_expr -> . expression OP_LOGIC expression
+    (21) atom -> . IDENT
+    (22) atom -> . NUMBER_INT
+    (23) atom -> . NUMBER_FLOAT
+    (24) atom -> . STRING
+    (25) atom -> . L_PAREN expression R_PAREN
+
+    IDENT           shift and go to state 34
+    NUMBER_INT      shift and go to state 21
+    NUMBER_FLOAT    shift and go to state 22
+    STRING          shift and go to state 23
+    L_PAREN         shift and go to state 16
+
+    expression                     shift and go to state 35
+    arithmetic_expr                shift and go to state 17
+    comparison_expr                shift and go to state 18
+    logical_expr                   shift and go to state 19
+    atom                           shift and go to state 20
+
+state 26
+
+    (13) expression_statement -> expression NEWLINE .
+
+    IDENT           reduce using rule 13 (expression_statement -> expression NEWLINE .)
+    KEYWORD         reduce using rule 13 (expression_statement -> expression NEWLINE .)
+    NEWLINE         reduce using rule 13 (expression_statement -> expression NEWLINE .)
+    NUMBER_INT      reduce using rule 13 (expression_statement -> expression NEWLINE .)
+    NUMBER_FLOAT    reduce using rule 13 (expression_statement -> expression NEWLINE .)
+    STRING          reduce using rule 13 (expression_statement -> expression NEWLINE .)
+    L_PAREN         reduce using rule 13 (expression_statement -> expression NEWLINE .)
+    $end            reduce using rule 13 (expression_statement -> expression NEWLINE .)
+
+
+state 27
+
+    (18) arithmetic_expr -> expression OP_ARITH . expression
+    (14) expression -> . arithmetic_expr
+    (15) expression -> . comparison_expr
+    (16) expression -> . logical_expr
+    (17) expression -> . atom
+    (18) arithmetic_expr -> . expression OP_ARITH expression
+    (19) comparison_expr -> . expression OP_COMP expression
+    (20) logical_expr -> . expression OP_LOGIC expression
+    (21) atom -> . IDENT
+    (22) atom -> . NUMBER_INT
+    (23) atom -> . NUMBER_FLOAT
+    (24) atom -> . STRING
+    (25) atom -> . L_PAREN expression R_PAREN
+
+    IDENT           shift and go to state 34
+    NUMBER_INT      shift and go to state 21
+    NUMBER_FLOAT    shift and go to state 22
+    STRING          shift and go to state 23
+    L_PAREN         shift and go to state 16
+
+    expression                     shift and go to state 36
+    arithmetic_expr                shift and go to state 17
+    comparison_expr                shift and go to state 18
+    logical_expr                   shift and go to state 19
+    atom                           shift and go to state 20
+
+state 28
+
+    (19) comparison_expr -> expression OP_COMP . expression
+    (14) expression -> . arithmetic_expr
+    (15) expression -> . comparison_expr
+    (16) expression -> . logical_expr
+    (17) expression -> . atom
+    (18) arithmetic_expr -> . expression OP_ARITH expression
+    (19) comparison_expr -> . expression OP_COMP expression
+    (20) logical_expr -> . expression OP_LOGIC expression
+    (21) atom -> . IDENT
+    (22) atom -> . NUMBER_INT
+    (23) atom -> . NUMBER_FLOAT
+    (24) atom -> . STRING
+    (25) atom -> . L_PAREN expression R_PAREN
+
+    IDENT           shift and go to state 34
+    NUMBER_INT      shift and go to state 21
+    NUMBER_FLOAT    shift and go to state 22
+    STRING          shift and go to state 23
+    L_PAREN         shift and go to state 16
+
+    expression                     shift and go to state 37
+    arithmetic_expr                shift and go to state 17
+    comparison_expr                shift and go to state 18
+    logical_expr                   shift and go to state 19
+    atom                           shift and go to state 20
+
+state 29
+
+    (20) logical_expr -> expression OP_LOGIC . expression
+    (14) expression -> . arithmetic_expr
+    (15) expression -> . comparison_expr
+    (16) expression -> . logical_expr
+    (17) expression -> . atom
+    (18) arithmetic_expr -> . expression OP_ARITH expression
+    (19) comparison_expr -> . expression OP_COMP expression
+    (20) logical_expr -> . expression OP_LOGIC expression
+    (21) atom -> . IDENT
+    (22) atom -> . NUMBER_INT
+    (23) atom -> . NUMBER_FLOAT
+    (24) atom -> . STRING
+    (25) atom -> . L_PAREN expression R_PAREN
+
+    IDENT           shift and go to state 34
+    NUMBER_INT      shift and go to state 21
+    NUMBER_FLOAT    shift and go to state 22
+    STRING          shift and go to state 23
+    L_PAREN         shift and go to state 16
+
+    expression                     shift and go to state 38
+    arithmetic_expr                shift and go to state 17
+    comparison_expr                shift and go to state 18
+    logical_expr                   shift and go to state 19
+    atom                           shift and go to state 20
+
+state 30
+
+    (34) compound_statement -> NEWLINE statement_list .
+    (3) statement_list -> statement_list . statement
+    (4) statement -> . assignment_statement
+    (5) statement -> . expression_statement
+    (6) statement -> . if_statement
+    (7) statement -> . while_statement
+    (8) statement -> . for_statement
+    (9) statement -> . function_def
+    (10) statement -> . return_statement
+    (11) statement -> . compound_statement
+    (12) assignment_statement -> . IDENT ASSIGN expression NEWLINE
+    (13) expression_statement -> . expression NEWLINE
+    (26) if_statement -> . KEYWORD expression COLON compound_statement
+    (27) if_statement -> . KEYWORD expression COLON compound_statement KEYWORD compound_statement
+    (28) while_statement -> . KEYWORD expression COLON compound_statement
+    (29) for_statement -> . KEYWORD IDENT KEYWORD expression COLON compound_statement
+    (30) function_def -> . KEYWORD IDENT L_PAREN parameter_list R_PAREN COLON compound_statement
+    (35) return_statement -> . KEYWORD expression NEWLINE
+    (34) compound_statement -> . NEWLINE statement_list
+    (14) expression -> . arithmetic_expr
+    (15) expression -> . comparison_expr
+    (16) expression -> . logical_expr
+    (17) expression -> . atom
+    (18) arithmetic_expr -> . expression OP_ARITH expression
+    (19) comparison_expr -> . expression OP_COMP expression
+    (20) logical_expr -> . expression OP_LOGIC expression
+    (21) atom -> . IDENT
+    (22) atom -> . NUMBER_INT
+    (23) atom -> . NUMBER_FLOAT
+    (24) atom -> . STRING
+    (25) atom -> . L_PAREN expression R_PAREN
+
+  ! shift/reduce conflict for IDENT resolved as shift
+  ! shift/reduce conflict for KEYWORD resolved as shift
+  ! shift/reduce conflict for NEWLINE resolved as shift
+  ! shift/reduce conflict for NUMBER_INT resolved as shift
+  ! shift/reduce conflict for NUMBER_FLOAT resolved as shift
+  ! shift/reduce conflict for STRING resolved as shift
+  ! shift/reduce conflict for L_PAREN resolved as shift
+    $end            reduce using rule 34 (compound_statement -> NEWLINE statement_list .)
+    IDENT           shift and go to state 12
+    KEYWORD         shift and go to state 15
+    NEWLINE         shift and go to state 14
+    NUMBER_INT      shift and go to state 21
+    NUMBER_FLOAT    shift and go to state 22
+    STRING          shift and go to state 23
+    L_PAREN         shift and go to state 16
+
+  ! IDENT           [ reduce using rule 34 (compound_statement -> NEWLINE statement_list .) ]
+  ! KEYWORD         [ reduce using rule 34 (compound_statement -> NEWLINE statement_list .) ]
+  ! NEWLINE         [ reduce using rule 34 (compound_statement -> NEWLINE statement_list .) ]
+  ! NUMBER_INT      [ reduce using rule 34 (compound_statement -> NEWLINE statement_list .) ]
+  ! NUMBER_FLOAT    [ reduce using rule 34 (compound_statement -> NEWLINE statement_list .) ]
+  ! STRING          [ reduce using rule 34 (compound_statement -> NEWLINE statement_list .) ]
+  ! L_PAREN         [ reduce using rule 34 (compound_statement -> NEWLINE statement_list .) ]
+
+    statement                      shift and go to state 24
+    assignment_statement           shift and go to state 4
+    expression_statement           shift and go to state 5
+    if_statement                   shift and go to state 6
+    while_statement                shift and go to state 7
+    for_statement                  shift and go to state 8
+    function_def                   shift and go to state 9
+    return_statement               shift and go to state 10
+    compound_statement             shift and go to state 11
+    expression                     shift and go to state 13
+    arithmetic_expr                shift and go to state 17
+    comparison_expr                shift and go to state 18
+    logical_expr                   shift and go to state 19
+    atom                           shift and go to state 20
+
+state 31
+
+    (26) if_statement -> KEYWORD expression . COLON compound_statement
+    (27) if_statement -> KEYWORD expression . COLON compound_statement KEYWORD compound_statement
+    (28) while_statement -> KEYWORD expression . COLON compound_statement
+    (35) return_statement -> KEYWORD expression . NEWLINE
+    (18) arithmetic_expr -> expression . OP_ARITH expression
+    (19) comparison_expr -> expression . OP_COMP expression
+    (20) logical_expr -> expression . OP_LOGIC expression
+
+    COLON           shift and go to state 39
+    NEWLINE         shift and go to state 40
+    OP_ARITH        shift and go to state 27
+    OP_COMP         shift and go to state 28
+    OP_LOGIC        shift and go to state 29
+
+
+state 32
+
+    (29) for_statement -> KEYWORD IDENT . KEYWORD expression COLON compound_statement
+    (30) function_def -> KEYWORD IDENT . L_PAREN parameter_list R_PAREN COLON compound_statement
+    (21) atom -> IDENT .
+
+    KEYWORD         shift and go to state 41
+    L_PAREN         shift and go to state 42
+    COLON           reduce using rule 21 (atom -> IDENT .)
+    NEWLINE         reduce using rule 21 (atom -> IDENT .)
+    OP_ARITH        reduce using rule 21 (atom -> IDENT .)
+    OP_COMP         reduce using rule 21 (atom -> IDENT .)
+    OP_LOGIC        reduce using rule 21 (atom -> IDENT .)
+
+
+state 33
+
+    (25) atom -> L_PAREN expression . R_PAREN
+    (18) arithmetic_expr -> expression . OP_ARITH expression
+    (19) comparison_expr -> expression . OP_COMP expression
+    (20) logical_expr -> expression . OP_LOGIC expression
+
+    R_PAREN         shift and go to state 43
+    OP_ARITH        shift and go to state 27
+    OP_COMP         shift and go to state 28
+    OP_LOGIC        shift and go to state 29
+
+
+state 34
+
+    (21) atom -> IDENT .
+
+    R_PAREN         reduce using rule 21 (atom -> IDENT .)
+    OP_ARITH        reduce using rule 21 (atom -> IDENT .)
+    OP_COMP         reduce using rule 21 (atom -> IDENT .)
+    OP_LOGIC        reduce using rule 21 (atom -> IDENT .)
+    NEWLINE         reduce using rule 21 (atom -> IDENT .)
+    COLON           reduce using rule 21 (atom -> IDENT .)
+
+
+state 35
+
+    (12) assignment_statement -> IDENT ASSIGN expression . NEWLINE
+    (18) arithmetic_expr -> expression . OP_ARITH expression
+    (19) comparison_expr -> expression . OP_COMP expression
+    (20) logical_expr -> expression . OP_LOGIC expression
+
+    NEWLINE         shift and go to state 44
+    OP_ARITH        shift and go to state 27
+    OP_COMP         shift and go to state 28
+    OP_LOGIC        shift and go to state 29
+
+
+state 36
+
+    (18) arithmetic_expr -> expression OP_ARITH expression .
+    (18) arithmetic_expr -> expression . OP_ARITH expression
+    (19) comparison_expr -> expression . OP_COMP expression
+    (20) logical_expr -> expression . OP_LOGIC expression
+
+  ! shift/reduce conflict for OP_ARITH resolved as shift
+  ! shift/reduce conflict for OP_COMP resolved as shift
+  ! shift/reduce conflict for OP_LOGIC resolved as shift
+    NEWLINE         reduce using rule 18 (arithmetic_expr -> expression OP_ARITH expression .)
+    COLON           reduce using rule 18 (arithmetic_expr -> expression OP_ARITH expression .)
+    R_PAREN         reduce using rule 18 (arithmetic_expr -> expression OP_ARITH expression .)
+    OP_ARITH        shift and go to state 27
+    OP_COMP         shift and go to state 28
+    OP_LOGIC        shift and go to state 29
+
+  ! OP_ARITH        [ reduce using rule 18 (arithmetic_expr -> expression OP_ARITH expression .) ]
+  ! OP_COMP         [ reduce using rule 18 (arithmetic_expr -> expression OP_ARITH expression .) ]
+  ! OP_LOGIC        [ reduce using rule 18 (arithmetic_expr -> expression OP_ARITH expression .) ]
+
+
+state 37
+
+    (19) comparison_expr -> expression OP_COMP expression .
+    (18) arithmetic_expr -> expression . OP_ARITH expression
+    (19) comparison_expr -> expression . OP_COMP expression
+    (20) logical_expr -> expression . OP_LOGIC expression
+
+  ! shift/reduce conflict for OP_ARITH resolved as shift
+  ! shift/reduce conflict for OP_COMP resolved as shift
+  ! shift/reduce conflict for OP_LOGIC resolved as shift
+    NEWLINE         reduce using rule 19 (comparison_expr -> expression OP_COMP expression .)
+    COLON           reduce using rule 19 (comparison_expr -> expression OP_COMP expression .)
+    R_PAREN         reduce using rule 19 (comparison_expr -> expression OP_COMP expression .)
+    OP_ARITH        shift and go to state 27
+    OP_COMP         shift and go to state 28
+    OP_LOGIC        shift and go to state 29
+
+  ! OP_ARITH        [ reduce using rule 19 (comparison_expr -> expression OP_COMP expression .) ]
+  ! OP_COMP         [ reduce using rule 19 (comparison_expr -> expression OP_COMP expression .) ]
+  ! OP_LOGIC        [ reduce using rule 19 (comparison_expr -> expression OP_COMP expression .) ]
+
+
+state 38
+
+    (20) logical_expr -> expression OP_LOGIC expression .
+    (18) arithmetic_expr -> expression . OP_ARITH expression
+    (19) comparison_expr -> expression . OP_COMP expression
+    (20) logical_expr -> expression . OP_LOGIC expression
+
+  ! shift/reduce conflict for OP_ARITH resolved as shift
+  ! shift/reduce conflict for OP_COMP resolved as shift
+  ! shift/reduce conflict for OP_LOGIC resolved as shift
+    NEWLINE         reduce using rule 20 (logical_expr -> expression OP_LOGIC expression .)
+    COLON           reduce using rule 20 (logical_expr -> expression OP_LOGIC expression .)
+    R_PAREN         reduce using rule 20 (logical_expr -> expression OP_LOGIC expression .)
+    OP_ARITH        shift and go to state 27
+    OP_COMP         shift and go to state 28
+    OP_LOGIC        shift and go to state 29
+
+  ! OP_ARITH        [ reduce using rule 20 (logical_expr -> expression OP_LOGIC expression .) ]
+  ! OP_COMP         [ reduce using rule 20 (logical_expr -> expression OP_LOGIC expression .) ]
+  ! OP_LOGIC        [ reduce using rule 20 (logical_expr -> expression OP_LOGIC expression .) ]
+
+
+state 39
+
+    (26) if_statement -> KEYWORD expression COLON . compound_statement
+    (27) if_statement -> KEYWORD expression COLON . compound_statement KEYWORD compound_statement
+    (28) while_statement -> KEYWORD expression COLON . compound_statement
+    (34) compound_statement -> . NEWLINE statement_list
+
+    NEWLINE         shift and go to state 14
+
+    compound_statement             shift and go to state 45
+
+state 40
+
+    (35) return_statement -> KEYWORD expression NEWLINE .
+
+    IDENT           reduce using rule 35 (return_statement -> KEYWORD expression NEWLINE .)
+    KEYWORD         reduce using rule 35 (return_statement -> KEYWORD expression NEWLINE .)
+    NEWLINE         reduce using rule 35 (return_statement -> KEYWORD expression NEWLINE .)
+    NUMBER_INT      reduce using rule 35 (return_statement -> KEYWORD expression NEWLINE .)
+    NUMBER_FLOAT    reduce using rule 35 (return_statement -> KEYWORD expression NEWLINE .)
+    STRING          reduce using rule 35 (return_statement -> KEYWORD expression NEWLINE .)
+    L_PAREN         reduce using rule 35 (return_statement -> KEYWORD expression NEWLINE .)
+    $end            reduce using rule 35 (return_statement -> KEYWORD expression NEWLINE .)
+
+
+state 41
+
+    (29) for_statement -> KEYWORD IDENT KEYWORD . expression COLON compound_statement
+    (14) expression -> . arithmetic_expr
+    (15) expression -> . comparison_expr
+    (16) expression -> . logical_expr
+    (17) expression -> . atom
+    (18) arithmetic_expr -> . expression OP_ARITH expression
+    (19) comparison_expr -> . expression OP_COMP expression
+    (20) logical_expr -> . expression OP_LOGIC expression
+    (21) atom -> . IDENT
+    (22) atom -> . NUMBER_INT
+    (23) atom -> . NUMBER_FLOAT
+    (24) atom -> . STRING
+    (25) atom -> . L_PAREN expression R_PAREN
+
+    IDENT           shift and go to state 34
+    NUMBER_INT      shift and go to state 21
+    NUMBER_FLOAT    shift and go to state 22
+    STRING          shift and go to state 23
+    L_PAREN         shift and go to state 16
+
+    expression                     shift and go to state 46
+    arithmetic_expr                shift and go to state 17
+    comparison_expr                shift and go to state 18
+    logical_expr                   shift and go to state 19
+    atom                           shift and go to state 20
+
+state 42
+
+    (30) function_def -> KEYWORD IDENT L_PAREN . parameter_list R_PAREN COLON compound_statement
+    (31) parameter_list -> . IDENT
+    (32) parameter_list -> . parameter_list COMMA IDENT
+    (33) parameter_list -> .
+
+    IDENT           shift and go to state 47
+    R_PAREN         reduce using rule 33 (parameter_list -> .)
+    COMMA           reduce using rule 33 (parameter_list -> .)
+
+    parameter_list                 shift and go to state 48
+
+state 43
+
+    (25) atom -> L_PAREN expression R_PAREN .
+
+    NEWLINE         reduce using rule 25 (atom -> L_PAREN expression R_PAREN .)
+    OP_ARITH        reduce using rule 25 (atom -> L_PAREN expression R_PAREN .)
+    OP_COMP         reduce using rule 25 (atom -> L_PAREN expression R_PAREN .)
+    OP_LOGIC        reduce using rule 25 (atom -> L_PAREN expression R_PAREN .)
+    COLON           reduce using rule 25 (atom -> L_PAREN expression R_PAREN .)
+    R_PAREN         reduce using rule 25 (atom -> L_PAREN expression R_PAREN .)
+
+
+state 44
+
+    (12) assignment_statement -> IDENT ASSIGN expression NEWLINE .
+
+    IDENT           reduce using rule 12 (assignment_statement -> IDENT ASSIGN expression NEWLINE .)
+    KEYWORD         reduce using rule 12 (assignment_statement -> IDENT ASSIGN expression NEWLINE .)
+    NEWLINE         reduce using rule 12 (assignment_statement -> IDENT ASSIGN expression NEWLINE .)
+    NUMBER_INT      reduce using rule 12 (assignment_statement -> IDENT ASSIGN expression NEWLINE .)
+    NUMBER_FLOAT    reduce using rule 12 (assignment_statement -> IDENT ASSIGN expression NEWLINE .)
+    STRING          reduce using rule 12 (assignment_statement -> IDENT ASSIGN expression NEWLINE .)
+    L_PAREN         reduce using rule 12 (assignment_statement -> IDENT ASSIGN expression NEWLINE .)
+    $end            reduce using rule 12 (assignment_statement -> IDENT ASSIGN expression NEWLINE .)
+
+
+state 45
+
+    (26) if_statement -> KEYWORD expression COLON compound_statement .
+    (27) if_statement -> KEYWORD expression COLON compound_statement . KEYWORD compound_statement
+    (28) while_statement -> KEYWORD expression COLON compound_statement .
+
+  ! shift/reduce conflict for KEYWORD resolved as shift
+  ! reduce/reduce conflict for IDENT resolved using rule 26 (if_statement -> KEYWORD expression COLON compound_statement .)
+  ! shift/reduce conflict for KEYWORD resolved as shift
+  ! reduce/reduce conflict for NEWLINE resolved using rule 26 (if_statement -> KEYWORD expression COLON compound_statement .)
+  ! reduce/reduce conflict for NUMBER_INT resolved using rule 26 (if_statement -> KEYWORD expression COLON compound_statement .)
+  ! reduce/reduce conflict for NUMBER_FLOAT resolved using rule 26 (if_statement -> KEYWORD expression COLON compound_statement .)
+  ! reduce/reduce conflict for STRING resolved using rule 26 (if_statement -> KEYWORD expression COLON compound_statement .)
+  ! reduce/reduce conflict for L_PAREN resolved using rule 26 (if_statement -> KEYWORD expression COLON compound_statement .)
+  ! reduce/reduce conflict for $end resolved using rule 26 (if_statement -> KEYWORD expression COLON compound_statement .)
+    IDENT           reduce using rule 26 (if_statement -> KEYWORD expression COLON compound_statement .)
+    NEWLINE         reduce using rule 26 (if_statement -> KEYWORD expression COLON compound_statement .)
+    NUMBER_INT      reduce using rule 26 (if_statement -> KEYWORD expression COLON compound_statement .)
+    NUMBER_FLOAT    reduce using rule 26 (if_statement -> KEYWORD expression COLON compound_statement .)
+    STRING          reduce using rule 26 (if_statement -> KEYWORD expression COLON compound_statement .)
+    L_PAREN         reduce using rule 26 (if_statement -> KEYWORD expression COLON compound_statement .)
+    $end            reduce using rule 26 (if_statement -> KEYWORD expression COLON compound_statement .)
+    KEYWORD         shift and go to state 49
+
+  ! KEYWORD         [ reduce using rule 26 (if_statement -> KEYWORD expression COLON compound_statement .) ]
+  ! IDENT           [ reduce using rule 28 (while_statement -> KEYWORD expression COLON compound_statement .) ]
+  ! KEYWORD         [ reduce using rule 28 (while_statement -> KEYWORD expression COLON compound_statement .) ]
+  ! NEWLINE         [ reduce using rule 28 (while_statement -> KEYWORD expression COLON compound_statement .) ]
+  ! NUMBER_INT      [ reduce using rule 28 (while_statement -> KEYWORD expression COLON compound_statement .) ]
+  ! NUMBER_FLOAT    [ reduce using rule 28 (while_statement -> KEYWORD expression COLON compound_statement .) ]
+  ! STRING          [ reduce using rule 28 (while_statement -> KEYWORD expression COLON compound_statement .) ]
+  ! L_PAREN         [ reduce using rule 28 (while_statement -> KEYWORD expression COLON compound_statement .) ]
+  ! $end            [ reduce using rule 28 (while_statement -> KEYWORD expression COLON compound_statement .) ]
+
+
+state 46
+
+    (29) for_statement -> KEYWORD IDENT KEYWORD expression . COLON compound_statement
+    (18) arithmetic_expr -> expression . OP_ARITH expression
+    (19) comparison_expr -> expression . OP_COMP expression
+    (20) logical_expr -> expression . OP_LOGIC expression
+
+    COLON           shift and go to state 50
+    OP_ARITH        shift and go to state 27
+    OP_COMP         shift and go to state 28
+    OP_LOGIC        shift and go to state 29
+
+
+state 47
+
+    (31) parameter_list -> IDENT .
+
+    R_PAREN         reduce using rule 31 (parameter_list -> IDENT .)
+    COMMA           reduce using rule 31 (parameter_list -> IDENT .)
+
+
+state 48
+
+    (30) function_def -> KEYWORD IDENT L_PAREN parameter_list . R_PAREN COLON compound_statement
+    (32) parameter_list -> parameter_list . COMMA IDENT
+
+    R_PAREN         shift and go to state 51
+    COMMA           shift and go to state 52
+
+
+state 49
+
+    (27) if_statement -> KEYWORD expression COLON compound_statement KEYWORD . compound_statement
+    (34) compound_statement -> . NEWLINE statement_list
+
+    NEWLINE         shift and go to state 14
+
+    compound_statement             shift and go to state 53
+
+state 50
+
+    (29) for_statement -> KEYWORD IDENT KEYWORD expression COLON . compound_statement
+    (34) compound_statement -> . NEWLINE statement_list
+
+    NEWLINE         shift and go to state 14
+
+    compound_statement             shift and go to state 54
+
+state 51
+
+    (30) function_def -> KEYWORD IDENT L_PAREN parameter_list R_PAREN . COLON compound_statement
+
+    COLON           shift and go to state 55
+
+
+state 52
+
+    (32) parameter_list -> parameter_list COMMA . IDENT
+
+    IDENT           shift and go to state 56
+
+
+state 53
+
+    (27) if_statement -> KEYWORD expression COLON compound_statement KEYWORD compound_statement .
+
+    IDENT           reduce using rule 27 (if_statement -> KEYWORD expression COLON compound_statement KEYWORD compound_statement .)
+    KEYWORD         reduce using rule 27 (if_statement -> KEYWORD expression COLON compound_statement KEYWORD compound_statement .)
+    NEWLINE         reduce using rule 27 (if_statement -> KEYWORD expression COLON compound_statement KEYWORD compound_statement .)
+    NUMBER_INT      reduce using rule 27 (if_statement -> KEYWORD expression COLON compound_statement KEYWORD compound_statement .)
+    NUMBER_FLOAT    reduce using rule 27 (if_statement -> KEYWORD expression COLON compound_statement KEYWORD compound_statement .)
+    STRING          reduce using rule 27 (if_statement -> KEYWORD expression COLON compound_statement KEYWORD compound_statement .)
+    L_PAREN         reduce using rule 27 (if_statement -> KEYWORD expression COLON compound_statement KEYWORD compound_statement .)
+    $end            reduce using rule 27 (if_statement -> KEYWORD expression COLON compound_statement KEYWORD compound_statement .)
+
+
+state 54
+
+    (29) for_statement -> KEYWORD IDENT KEYWORD expression COLON compound_statement .
+
+    IDENT           reduce using rule 29 (for_statement -> KEYWORD IDENT KEYWORD expression COLON compound_statement .)
+    KEYWORD         reduce using rule 29 (for_statement -> KEYWORD IDENT KEYWORD expression COLON compound_statement .)
+    NEWLINE         reduce using rule 29 (for_statement -> KEYWORD IDENT KEYWORD expression COLON compound_statement .)
+    NUMBER_INT      reduce using rule 29 (for_statement -> KEYWORD IDENT KEYWORD expression COLON compound_statement .)
+    NUMBER_FLOAT    reduce using rule 29 (for_statement -> KEYWORD IDENT KEYWORD expression COLON compound_statement .)
+    STRING          reduce using rule 29 (for_statement -> KEYWORD IDENT KEYWORD expression COLON compound_statement .)
+    L_PAREN         reduce using rule 29 (for_statement -> KEYWORD IDENT KEYWORD expression COLON compound_statement .)
+    $end            reduce using rule 29 (for_statement -> KEYWORD IDENT KEYWORD expression COLON compound_statement .)
+
+
+state 55
+
+    (30) function_def -> KEYWORD IDENT L_PAREN parameter_list R_PAREN COLON . compound_statement
+    (34) compound_statement -> . NEWLINE statement_list
+
+    NEWLINE         shift and go to state 14
+
+    compound_statement             shift and go to state 57
+
+state 56
+
+    (32) parameter_list -> parameter_list COMMA IDENT .
+
+    R_PAREN         reduce using rule 32 (parameter_list -> parameter_list COMMA IDENT .)
+    COMMA           reduce using rule 32 (parameter_list -> parameter_list COMMA IDENT .)
+
+
+state 57
+
+    (30) function_def -> KEYWORD IDENT L_PAREN parameter_list R_PAREN COLON compound_statement .
+
+    IDENT           reduce using rule 30 (function_def -> KEYWORD IDENT L_PAREN parameter_list R_PAREN COLON compound_statement .)
+    KEYWORD         reduce using rule 30 (function_def -> KEYWORD IDENT L_PAREN parameter_list R_PAREN COLON compound_statement .)
+    NEWLINE         reduce using rule 30 (function_def -> KEYWORD IDENT L_PAREN parameter_list R_PAREN COLON compound_statement .)
+    NUMBER_INT      reduce using rule 30 (function_def -> KEYWORD IDENT L_PAREN parameter_list R_PAREN COLON compound_statement .)
+    NUMBER_FLOAT    reduce using rule 30 (function_def -> KEYWORD IDENT L_PAREN parameter_list R_PAREN COLON compound_statement .)
+    STRING          reduce using rule 30 (function_def -> KEYWORD IDENT L_PAREN parameter_list R_PAREN COLON compound_statement .)
+    L_PAREN         reduce using rule 30 (function_def -> KEYWORD IDENT L_PAREN parameter_list R_PAREN COLON compound_statement .)
+    $end            reduce using rule 30 (function_def -> KEYWORD IDENT L_PAREN parameter_list R_PAREN COLON compound_statement .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for IDENT in state 30 resolved as shift
+WARNING: shift/reduce conflict for KEYWORD in state 30 resolved as shift
+WARNING: shift/reduce conflict for NEWLINE in state 30 resolved as shift
+WARNING: shift/reduce conflict for NUMBER_INT in state 30 resolved as shift
+WARNING: shift/reduce conflict for NUMBER_FLOAT in state 30 resolved as shift
+WARNING: shift/reduce conflict for STRING in state 30 resolved as shift
+WARNING: shift/reduce conflict for L_PAREN in state 30 resolved as shift
+WARNING: shift/reduce conflict for OP_ARITH in state 36 resolved as shift
+WARNING: shift/reduce conflict for OP_COMP in state 36 resolved as shift
+WARNING: shift/reduce conflict for OP_LOGIC in state 36 resolved as shift
+WARNING: shift/reduce conflict for OP_ARITH in state 37 resolved as shift
+WARNING: shift/reduce conflict for OP_COMP in state 37 resolved as shift
+WARNING: shift/reduce conflict for OP_LOGIC in state 37 resolved as shift
+WARNING: shift/reduce conflict for OP_ARITH in state 38 resolved as shift
+WARNING: shift/reduce conflict for OP_COMP in state 38 resolved as shift
+WARNING: shift/reduce conflict for OP_LOGIC in state 38 resolved as shift
+WARNING: shift/reduce conflict for KEYWORD in state 45 resolved as shift
+WARNING: shift/reduce conflict for KEYWORD in state 45 resolved as shift
+WARNING: reduce/reduce conflict in state 45 resolved using rule (if_statement -> KEYWORD expression COLON compound_statement)
+WARNING: rejected rule (while_statement -> KEYWORD expression COLON compound_statement) in state 45
+WARNING: Rule (while_statement -> KEYWORD expression COLON compound_statement) is never reduced
