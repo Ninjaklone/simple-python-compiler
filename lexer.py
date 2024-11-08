@@ -6,7 +6,7 @@ from ply.lex import lex
 class Lexer:
     # List of token names - Added more specific token types
     tokens = (
-        'NUMBER_INT', 'NUMBER_FLOAT', 'STRING', 'COMMENT', 'NEWLINE', 'SKIP',
+        'NUMBER' , 'STRING', 'COMMENT', 'NEWLINE', 'SKIP',
         'KEYWORD', 'IDENT', 'OP_ARITH', 'OP_COMP', 'OP_LOGIC', 'OP_BITWISE',
         'DELIM', 'L_PAREN', 'R_PAREN', 'L_BRACE', 'R_BRACE', 'L_BRACKET', 'R_BRACKET',
         'ASSIGN', 'COMMA', 'DOT', 'COLON', 'SEMICOLON'
@@ -18,12 +18,11 @@ class Lexer:
         'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from',
         'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not',
         'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield',
-        'True', 'False', 'None'
+        'True', 'False', 'None', 'print'
     }
 
     # Regular expression rules with better precision
-    t_NUMBER_INT = r'\b\d+\b'
-    t_NUMBER_FLOAT = r'\b\d*\.\d+([eE][-+]?\d+)?\b|\b\d+\.\d*([eE][-+]?\d+)?\b|\b\d+[eE][-+]?\d+\b'
+
     t_STRING = r'(?:"(?:[^"\\]|\\.)*"|\'(?:[^\'\\]|\\.)*\')'  # Handles escaped quotes
     t_COMMENT = r'\#[^\n]*'
     t_NEWLINE = r'[\n]+'
@@ -48,6 +47,11 @@ class Lexer:
     t_COLON = r':'
     t_SEMICOLON = r';'
 
+
+    def t_NUMBER(self, t):
+        r'\b\d*\.\d+([eE][-+]?\d+)?\b|\b\d+\.\d*([eE][-+]?\d+)?\b|\b\d+[eE][-+]?\d+\b|\b\d+\b'
+        t.value = float(t.value) if '.' in t.value or 'e' in t.value.lower() else int(t.value)
+        return t
     def t_IDENT(self, t):
         r'[A-Za-z_][A-Za-z0-9_]*'
         # Check if identifier is a keyword
@@ -86,7 +90,7 @@ class Lexer:
                     break
                 
                 # Skip only whitespace, keep newlines and comments
-                if tok.type == 'SKIP':
+                if tok.type == 'SKIP' or tok.type == 'COMMENT':
                     continue
 
                 # Track delimiter balance
