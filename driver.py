@@ -1,7 +1,7 @@
 import unittest
 from typing import List, Dict, Any, Tuple
 from lexer import Lexer
-from parser import Parser
+from parser import Parser # type: ignore
 from semantic_analyzer import SemanticAnalyzer
 from ir_generator import IRGenerator
 from optimizer import Optimizer
@@ -40,6 +40,7 @@ steps_per_student = distance_in_meters / average_stride_length
 print("The average number of steps required for each student to complete the walk is approximately:", steps_per_student)
 
 """
+
 source_code = """
     x = 42
     print(x)
@@ -55,7 +56,7 @@ op_ir = Optimizer.optimize(Optimizer(), IR)
 ass = CodeGenerator.generate(CodeGenerator(),op_ir)
 print("=============================================")
 
-# print(ast)
+print(ast)
 print(IR)
 print("=============================================")
 print(op_ir)

@@ -127,4 +127,4 @@ class Parser:
             self.current_token += 1
             return expr
         else:
-            raise SyntaxError(f"Unexpected token: {token[1]}")
+            raise SyntaxError(f"Unexpected token: {token[1]}") # type: ignore
