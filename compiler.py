@@ -1,6 +1,6 @@
 from typing import List, Dict, Any, Tuple
 from lexer import Lexer
-from parser import Parser
+from parser import Parser # type: ignore
 from semantic_analyzer import SemanticAnalyzer
 from ir_generator import IRGenerator
 from optimizer import Optimizer
